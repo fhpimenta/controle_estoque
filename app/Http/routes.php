@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "<h1>Primeira Lógica com Laravel</h1>";
 });
+
+Route::get('/outra', function() {
+    return "<h1>Outra mensagem</h1>";
+});
+
+Route::get('/produtos', "ProdutoController@lista");
+Route::get('/produtos/mostra', 'ProdutoController@mostra');
