@@ -14,32 +14,31 @@
         </div>
     @endif
 
-    <form action="{{action('ProdutoController@atualizar', $p->id)}}" method="post">
+    {{ Form::model($p,['route' => 'produto.atualizar', $p->id ]) }}
+    {{ Form::token() }}
 
-        <input type="hidden" name="_token" value="{{{ csrf_token() }}}">
+    <div class="form-group">
+        {{ Form::label('nome', 'Nome*') }}
+        {{ Form::text('nome','',['class' => 'form-control'] ) }}
+    </div>
 
-        <div class="form-group">
-            <label>Nome</label>
-            <input name="nome" value="{{ $p->nome }}" class="form-control">
-        </div>
+    <div class="form-group">
+        {{ Form::label('descricao', 'Descrição') }}
+        {{ Form::text('descricao','', ['class' => 'form-control']) }}
+    </div>
 
-        <div class="form-group">
-            <label>Descricao</label>
-            <input name="descricao" value="{{ $p->descricao }}" class="form-control">
-        </div>
+    <div class="form-group">
+        {{ Form::label('valor', 'Valor') }}
+        {{ Form::text('valor','',['class' => 'form-control']) }}
+    </div>
 
-        <div class="form-group">
-            <label>Valor</label>
-            <input name="valor" value="{{ $p->valor }}" class="form-control">
-        </div>
+    <div class="form-group">
+        {{ Form::label('quantidade', 'Quantidade') }}
+        {{ Form::number('quantidade',['class' => 'form-control']) }}
+    </div>
 
-        <div class="form-group">
-            <label>Quantidade</label>
-            <input name="quantidade" value="{{ $p->quantidade }}" type="number" class="form-control">
-        </div>
+    {{ Form::submit('Atualizar', ['class' => 'btn btn-primary btn-block']) }}
 
-        <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
-
-    </form>
+    {{ Form::close() }}
 
 @stop

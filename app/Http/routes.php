@@ -12,12 +12,12 @@
 */
 
 Route::get('home', 'HomeController@index');
-
+/*
 Route::controllers([
 'auth' => 'Auth\AuthController',
 'password' => 'Auth\PasswordController',
 ]);
-
+*/
 Route::get('/login', 'LoginController@login');
 
 Route::get('/outra', function() {
@@ -31,4 +31,4 @@ Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
 Route::get('/produtos/json', 'ProdutoController@listaJson');
 Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 Route::get('/produtos/editar/{id}', 'ProdutoController@editar');
-Route::post('/produtos/atualizar/{id}', 'ProdutoController@atualizar');
+Route::post('/produtos/atualizar/{id}', ['as' => 'produto.atualizar','uses' => 'ProdutoController@atualizar']);
